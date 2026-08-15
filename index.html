@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BalajiOS</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+  <!-- ============ TOP BAR ============ -->
+  <div id="top">
+    <div class="top-left">
+      <span class="top-logo">🪐</span>
+      <span class="top-name" id="welcomeopen">BalajiOS</span>
+    </div>
+    <div class="top-right">
+      <span class="top-chip" id="statusChip">⚡ Ready</span>
+      <span class="top-chip" id="timeElement">--:--:--</span>
+    </div>
+  </div>
+
+  <!-- ============ DESKTOP ICONS ============ -->
+  <div id="desktopApps">
+    <div class="app-icon" id="notesIcon">
+      <div class="icon-img">📓</div>
+      <p class="icon-label">Notes</p>
+    </div>
+    <div class="app-icon" id="projectsIcon">
+      <div class="icon-img">🚀</div>
+      <p class="icon-label">Projects</p>
+    </div>
+    <div class="app-icon" id="terminalIcon">
+      <div class="icon-img">💻</div>
+      <p class="icon-label">Terminal</p>
+    </div>
+  </div>
+
+  <!-- ============ WELCOME WINDOW ============ -->
+  <div class="window" id="welcome" style="top: calc(50% - 220px); left: calc(50% - 240px);">
+    <div class="windowheader" id="welcomeheader">
+      <div class="closebutton" id="welcomeclose"></div>
+      <p class="headertext">Welcome</p>
+      <div class="spacer"></div>
+    </div>
+    <div class="windowbody welcome-body">
+      <img class="avatar" src="https://avatars.githubusercontent.com/dsribalaji?s=96" alt="avatar" />
+      <h1 class="os-title">BalajiOS <span class="version">v1.0</span></h1>
+      <p class="os-tagline">
+        A personal operating system built to answer the question:
+        <em>"Who is Sri Balaji?"</em>
+      </p>
+      <p class="os-desc">
+        I'm an <abbr title="Electronics and Communication Engineering">ECE</abbr> sophomore
+        who loves <strong>embedded systems</strong>, <strong>AI</strong>, and building
+        <del>boring websites</del> <ins>interactive experiences</ins>. Explore the desktop —
+        every window opens a little part of my world. <code>sudo make me a coffee</code> is not
+        yet supported, but everything else is!
+      </p>
+      <div class="welcome-links">
+        <a href="https://github.com/dsribalaji" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/sribalaji-dangeti" target="_blank" rel="noopener">LinkedIn ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ NOTES APP ============ -->
+  <div class="window" id="notes" style="top: calc(50% - 260px); left: calc(50% - 300px); display: none;">
+    <div class="windowheader" id="notesheader">
+      <div class="closebutton" id="notesclose"></div>
+      <p class="headertext">📓 Notes</p>
+      <div class="spacer"></div>
+    </div>
+    <div class="windowbody app-body">
+      <div class="sidebar" id="sidebar">
+        <p class="sidebar-title">Field Notes</p>
+      </div>
+      <div class="note-content" id="notesContent">
+        <p class="note-placeholder">Select a note from the sidebar →</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ PROJECTS APP ============ -->
+  <div class="window" id="projects" style="top: calc(50% - 280px); left: calc(50% - 330px); display: none;">
+    <div class="windowheader" id="projectsheader">
+      <div class="closebutton" id="projectsclose"></div>
+      <p class="headertext">🚀 Projects</p>
+      <div class="spacer"></div>
+    </div>
+    <div class="windowbody projects-body">
+      <div class="project-card" onclick="openExternal('https://github.com/dsribalaji')">
+        <span class="card-emoji">🤖</span>
+        <div>
+          <p class="card-title">AI Agents & Automation</p>
+          <p class="card-desc">Multi-agent pipelines: a CrewAI lead-gen engine, a 6-persona AI team on NVIDIA NIM, and a cookie-based gateway to run many free AI models from the CLI.</p>
+        </div>
+      </div>
+      <div class="project-card" onclick="openExternal('https://github.com/dsribalaji')">
+        <span class="card-emoji">📡</span>
+        <div>
+          <p class="card-title">Embedded & Robotics</p>
+          <p class="card-desc">A 4WD Raspberry Pi person-following car, a flying drone, and a Zepp OS watch app (mic-first voice note taker) built for the Amazfit Bip 5.</p>
+        </div>
+      </div>
+      <div class="project-card" onclick="openExternal('https://github.com/dsribalaji')">
+        <span class="card-emoji">🕸️</span>
+        <div>
+          <p class="card-title">Web & Client Work</p>
+          <p class="card-desc">Effex.dev — client websites for local businesses; plus internal dashboards and n8n automation flows that run a WhatsApp-commerce backend.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ TERMINAL APP ============ -->
+  <div class="window" id="terminal" style="top: calc(50% - 240px); left: calc(50% - 290px); display: none;">
+    <div class="windowheader" id="terminalheader">
+      <div class="closebutton" id="terminalclose"></div>
+      <p class="headertext">💻 Terminal</p>
+      <div class="spacer"></div>
+    </div>
+    <div class="windowbody terminal-body">
+      <div class="term-output" id="termOutput">
+        <p class="term-line term-muted">BalajiOS shell v1.0 — type <span class="term-cmd">help</span> to start</p>
+      </div>
+      <div class="term-input-row">
+        <span class="term-prompt">balaji@os:~$</span>
+        <input type="text" id="termInput" autocomplete="off" spellcheck="false" />
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ LOGIN SCREEN ============ -->
+  <div id="loginScreen">
+    <div class="login-card">
+      <span class="login-logo">🪐</span>
+      <h2>BalajiOS</h2>
+      <p class="login-sub">Click to enter your OS</p>
+      <button id="loginBtn">▶ Boot</button>
+    </div>
+  </div>
+
+  <div id="bootFlash"></div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
