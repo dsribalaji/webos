@@ -10,11 +10,11 @@
   <!-- ============ TOP BAR ============ -->
   <div id="top">
     <div class="top-left">
-      <span class="top-logo">🪐</span>
+      <svg class="top-logo" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><ellipse cx="12" cy="12" rx="3.4" ry="8"/><circle cx="12" cy="12" r="1.4" fill="#fff"/></svg>
       <span class="top-name" id="welcomeopen">BalajiOS</span>
     </div>
     <div class="top-right">
-      <span class="top-chip" id="statusChip">⚡ Ready</span>
+      <span class="top-chip" id="statusChip">Ready</span>
       <span class="top-chip" id="timeElement">--:--:--</span>
     </div>
   </div>
@@ -22,15 +22,15 @@
   <!-- ============ DESKTOP ICONS ============ -->
   <div id="desktopApps">
     <div class="app-icon" id="notesIcon">
-      <div class="icon-img">📓</div>
+      <svg class="icon-img" viewBox="0 0 24 24" fill="none" stroke="#7c5cff" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
       <p class="icon-label">Notes</p>
     </div>
     <div class="app-icon" id="projectsIcon">
-      <div class="icon-img">🚀</div>
+      <svg class="icon-img" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" stroke-width="1.8"><path d="M2 12l3-7h14l3 7-3 7H5z"/><path d="M12 5v14M2 12h20M5 12c3 2 3 4 0 5M19 12c-3 2-3 4 0 5"/></svg>
       <p class="icon-label">Projects</p>
     </div>
     <div class="app-icon" id="terminalIcon">
-      <div class="icon-img">💻</div>
+      <svg class="icon-img" viewBox="0 0 24 24" fill="none" stroke="#f5c451" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 9l3 3-3 3M11 15h5"/></svg>
       <p class="icon-label">Terminal</p>
     </div>
   </div>
@@ -67,7 +67,7 @@
   <div class="window" id="notes" style="top: calc(50% - 260px); left: calc(50% - 300px); display: none;">
     <div class="windowheader" id="notesheader">
       <div class="closebutton" id="notesclose"></div>
-      <p class="headertext">📓 Notes</p>
+      <p class="headertext">Notes</p>
       <div class="spacer"></div>
     </div>
     <div class="windowbody app-body">
@@ -84,26 +84,26 @@
   <div class="window" id="projects" style="top: calc(50% - 280px); left: calc(50% - 330px); display: none;">
     <div class="windowheader" id="projectsheader">
       <div class="closebutton" id="projectsclose"></div>
-      <p class="headertext">🚀 Projects</p>
+      <p class="headertext">Projects</p>
       <div class="spacer"></div>
     </div>
     <div class="windowbody projects-body">
       <div class="project-card" onclick="openExternal('https://github.com/dsribalaji')">
-        <span class="card-emoji">🤖</span>
+        <svg class="card-emoji" viewBox="0 0 24 24" fill="none" stroke="#7c5cff" stroke-width="1.8"><rect x="4" y="8" width="16" height="11" rx="2"/><path d="M12 8V4M8 12h.01M16 12h.01M8 16h8M2 12h2M20 12h2"/></svg>
         <div>
           <p class="card-title">AI Agents & Automation</p>
           <p class="card-desc">Multi-agent pipelines: a CrewAI lead-gen engine, a 6-persona AI team on NVIDIA NIM, and a cookie-based gateway to run many free AI models from the CLI.</p>
         </div>
       </div>
       <div class="project-card" onclick="openExternal('https://github.com/dsribalaji')">
-        <span class="card-emoji">📡</span>
+        <svg class="card-emoji" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 9 9"/><path d="M12 7a5 5 0 0 1 5 5"/><circle cx="12" cy="12" r="1.4" fill="#00e5a0"/></svg>
         <div>
           <p class="card-title">Embedded & Robotics</p>
           <p class="card-desc">A 4WD Raspberry Pi person-following car, a flying drone, and a Zepp OS watch app (mic-first voice note taker) built for the Amazfit Bip 5.</p>
         </div>
       </div>
       <div class="project-card" onclick="openExternal('https://github.com/dsribalaji')">
-        <span class="card-emoji">🕸️</span>
+        <svg class="card-emoji" viewBox="0 0 24 24" fill="none" stroke="#f5c451" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3z"/></svg>
         <div>
           <p class="card-title">Web & Client Work</p>
           <p class="card-desc">Effex.dev — client websites for local businesses; plus internal dashboards and n8n automation flows that run a WhatsApp-commerce backend.</p>
@@ -116,7 +116,7 @@
   <div class="window" id="terminal" style="top: calc(50% - 240px); left: calc(50% - 290px); display: none;">
     <div class="windowheader" id="terminalheader">
       <div class="closebutton" id="terminalclose"></div>
-      <p class="headertext">💻 Terminal</p>
+      <p class="headertext">Terminal</p>
       <div class="spacer"></div>
     </div>
     <div class="windowbody terminal-body">
@@ -133,10 +133,10 @@
   <!-- ============ LOGIN SCREEN ============ -->
   <div id="loginScreen">
     <div class="login-card">
-      <span class="login-logo">🪐</span>
+      <svg class="login-logo" viewBox="0 0 24 24" fill="none" stroke="#7c5cff" stroke-width="1.6"><circle cx="12" cy="12" r="8"/><ellipse cx="12" cy="12" rx="3.4" ry="8"/><circle cx="12" cy="12" r="1.4" fill="#7c5cff"/></svg>
       <h2>BalajiOS</h2>
       <p class="login-sub">Click to enter your OS</p>
-      <button id="loginBtn">▶ Boot</button>
+      <button id="loginBtn">Boot</button>
     </div>
   </div>
 

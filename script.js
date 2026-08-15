@@ -20,7 +20,7 @@ function updateTime() {
   const now = new Date();
   const time = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
   const date = now.toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' });
-  document.querySelector('#timeElement').innerHTML = `🕒 ${date} · ${time}`;
+  document.querySelector('#timeElement').innerHTML = `${date} · ${time}`;
 }
 updateTime();
 setInterval(updateTime, 1000);
@@ -156,7 +156,7 @@ const notesContent = [
       wallpaper is a nebula and every icon opens a room of my life.</p>
       <blockquote>"The desktop is a canvas. The windows are the stories."</blockquote>
       <p>This OS is built from scratch with plain HTML, CSS and JavaScript — no frameworks, no
-      libraries. Drag the windows around. Open the terminal. Stay a while. 🪐</p>
+      libraries. Drag the windows around. Open the terminal. Stay a while. </p>
     `
   },
   {
@@ -182,7 +182,7 @@ const notesContent = [
       <p>My proudest hardware build: a four-wheel-drive rover that locks onto a person and follows them
       around. The vision pipeline detects the target, computes a steering error, and a PID controller
       smooths the throttle — so it follows like a loyal dog instead of a drunkard.</p>
-      <blockquote>It's basically a tiny self-driving car. With the safety budget of a toy. 🚗💨</blockquote>
+      <blockquote>It's basically a tiny self-driving car. With the safety budget of a toy. </blockquote>
       <p>Next on the bench: a drone with similar autonomy. The sky is the overclock limit.</p>
     `
   },
@@ -196,7 +196,7 @@ const notesContent = [
       lead-generation pipeline that researches companies, and a notebook-based second brain that
       remembers everything for me.</p>
       <p>Sometimes I even let an AI write my homework notes. The irony is not lost on me: I study
-      electronics so I can build machines that think, then I use those machines to study. 🌀</p>
+      electronics so I can build machines that think, then I use those machines to study. </p>
     `
   }
 ];
@@ -307,7 +307,7 @@ OpenCV · TensorFlow (learning) · CrewAI · n8n · Figma basics · PCB (learnin
 
     case 'sudo':
       if (arg.toLowerCase().includes('make me a coffee')) {
-        printLine(`<span class="term-ok">☕ Access granted. Brewing... (this OS has no coffee. Sorry.)</span>`);
+        printLine(`<span class="term-ok">Access granted. Brewing... (this OS has no coffee. Sorry.)</span>`);
       } else {
         printLine(`<span class="term-err">sudo: ${arg || 'nothing'} : command executed with great authority. Nothing happened.</span>`);
       }
