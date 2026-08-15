@@ -1,45 +1,54 @@
-# BalajiOS - A Personal Web Operating System
+# BalajiOS
 
-A fully interactive, browser-based personal OS built from scratch with plain HTML, CSS and JavaScript - no frameworks, no libraries, no build step.
+An interactive, browser-based personal operating system that runs entirely on the web — built from scratch with plain HTML, CSS, and JavaScript. Boot in, drag the windows around, and explore Sri Balaji's world through his apps instead of reading a static portfolio page.
 
-Boot in, explore the desktop, drag the windows around, and get to know Sri Balaji by exploring his world instead of reading a boring personal website.
-
-## Features
-
-- Login screen - a boot gate with a flash animation before entering the OS
-- Live top bar - real-time clock (updates every second) plus a status chip
-- Draggable windows - grab any window by its header and move it
-- Window stacking - tap a window and it rises to the top (z-index management)
-- Notes app - a "Field Notes" reader with a clickable sidebar and 4 personal essays (origin story, why ECE, the robot car, AI second brain)
-- Projects app - clickable cards showing real projects (AI agents, robotics, web)
-- Terminal app - a working interactive shell with commands: help, about, projects, skills, contact, date, echo, sudo, clear, exit, whoami
-- Glassmorphism design - blurred translucent windows over a nebula gradient, custom scrollbars
+![BalajiOS desktop with terminal, notes, and projects open](screenshot.png)
 
 ## Try it
 
-Open the live site (GitHub Pages link), click Boot, then:
+**Live demo: https://dsribalaji.github.io/webos/**
 
-1. Drag the Welcome window around by its header
-2. Open Notes from the desktop icons and switch essays in the sidebar
-3. Open Terminal and type help - try "sudo make me a coffee"
-4. Open Projects and click a card
+Click "Boot", then:
+- Drag the Welcome window around by its header
+- Open Notes and switch between the four essays in the sidebar
+- Open Terminal and type `help` — try `sudo make me a coffee`
+- Open Projects and click a card to learn about real work
 
-## Built with
+## Features
 
-- HTML5 semantic markup
-- CSS3 - flexbox, glassmorphism (backdrop-filter), gradients, custom scrollbars
-- Vanilla JavaScript - DOM manipulation, event listeners, setInterval clock, drag logic
+- Login screen with boot animation
+- Live clock in the top bar, updating every second
+- Draggable, stackable windows with z-index management
+- Notes app: a sidebar reader with 4 personal essays
+- Projects app: clickable cards for real projects
+- Terminal app: a working shell with help, about, projects, skills, contact, date, echo, sudo, clear, exit, whoami
+- Glassmorphism design with inline SVG icons, custom scrollbars, no frameworks
 
-## Files
+## Run it locally
+
+This is a static site — no build step, no dependencies.
+
+```bash
+git clone https://github.com/dsribalaji/webos.git
+cd webos
+python3 -m http.server 8000
+# open http://localhost:8000
+```
+
+Any static file server works. There are no environment variables and nothing to install.
+
+## How it works
+
+Three files, zero dependencies:
 
 | File | Purpose |
 |------|---------|
-| index.html | OS structure: top bar, desktop, 4 windows, login screen |
-| style.css | All styling - theme, windows, apps, terminal, login |
-| script.js | All logic - clock, window manager, drag, apps, terminal |
+| `index.html` | OS structure: top bar, desktop, windows, login screen |
+| `style.css` | All styling — theme, windows, apps, terminal, login |
+| `script.js` | All logic — clock, window manager, drag, apps, terminal |
 
-## About
+The OS is a single-page app. A `biggestIndex` counter manages window stacking; a W3-pattern drag handler moves windows by their headers; the terminal is a command switch on the input; the notes app renders content from a JavaScript array into a clickable sidebar. Everything is vanilla — the point was to prove a personal OS needs no framework.
 
-Built by Sri Balaji Dangeti (ECE sophomore, hardware tinkerer, AI-automation nerd) as part of the Hack Club Stardance challenge, following the WebOS Jams batch.
+## Credits
 
-> "Most people have a website. I wanted a world."
+Built by Sri Balaji Dangeti as part of Hack Club's Stardance challenge, following the Hack Club WebOS Jams batch by SerenityUX (with a community tip from jianmin-chen).
