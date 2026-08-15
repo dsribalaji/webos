@@ -138,6 +138,11 @@ initializeWindow('welcome');
 initializeWindow('notes');
 initializeWindow('projects');
 initializeWindow('terminal');
+initializeWindow('contact');
+initializeWindow('weather');
+initializeWindow('calc');
+initializeWindow('paint');
+initializeWindow('about');
 
 /* Welcome reopens from the top-bar name */
 document.querySelector('#welcomeopen').addEventListener('click', () => {
@@ -341,3 +346,241 @@ termInput.addEventListener('keydown', (e) => {
 document.querySelector('#terminal').addEventListener('mousedown', () => {
   setTimeout(() => termInput.focus(), 50);
 });
+
+
+/* ---------- WEATHER APP ---------- */
+const WEATHER_CITY = { name: 'Hyderabad', lat: 17.385, lon: 78.4867 };
+
+const WMO_CODES = {
+  0: ['Clear sky'],
+  1: ['Mainly clear'],
+  2: ['Partly cloudy'],
+  3: ['Overcast'],
+  45: ['Fog'],
+  48: ['Rime fog'],
+  51: ['Light drizzle'],
+  53: ['Drizzle'],
+  55: ['Heavy drizzle'],
+  61: ['Light rain'],
+  63: ['Rain'],
+  65: ['Heavy rain'],
+  71: ['Light snow'],
+  73: ['Snow'],
+  75: ['Heavy snow'],
+  80: ['Light showers'],
+  81: ['Showers'],
+  82: ['Heavy showers'],
+  95: ['Thunderstorm'],
+  96: ['Thunderstorm + hail'],
+  99: ['Severe thunderstorm']
+};
+
+function weatherDesc(code) {
+  return WMO_CODES[code] ? WMO_CODES[code][0] : 'Unknown';
+}
+
+function loadWeather() {
+  const now = document.querySelector('#weatherNow');
+  const fc = document.querySelector('#weatherForecast');
+  if (!now) return;
+
+  now.innerHTML = '<p class="weather-loading">Loading weather...</p>';
+  fc.innerHTML = '';
+
+  const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + WEATHER_CITY.lat +
+    '&longitude=' + WEATHER_CITY.lon +
+    '&current=temperature_2m,weather_code,relative_humidity_2m,wind_speed_10m' +
+    '&daily=weather_code,temperature_2m_max,temperature_2m_min&timezone=auto&forecast_days=5';
+
+  fetch(url)
+    .then(r => r.json())
+    .then(data => {
+      const cur = data.current;
+      const desc = weatherDesc(cur.weather_code);
+      now.innerHTML = `
+        <p class="weather-city">${WEATHER_CITY.name}</p>
+        <p class="weather-temp">${Math.round(cur.temperature_2m)}&deg;C</p>
+        <p class="weather-desc">${desc}</p>
+        <p class="weather-meta">Humidity ${cur.relative_humidity_2m}% &middot; Wind ${Math.round(cur.wind_speed_10m)} km/h</p>
+      `;
+
+      const days = data.daily;
+      let html = '';
+      for (let i = 0; i < days.time.length; i++) {
+        const ddesc = weatherDesc(days.weather_code[i]);
+        const date = new Date(days.time[i]);
+        const label = i === 0 ? 'Today' : date.toLocaleDateString('en-IN', { weekday: 'short' });
+        html += `
+          <div class="weather-day">
+            <span class="wd-label">${label}</span>
+            <span class="wd-desc">${ddesc}</span>
+            <span class="wd-temp">${Math.round(days.temperature_2m_max[i])}&deg; / ${Math.round(days.temperature_2m_min[i])}&deg;</span>
+          </div>`;
+      }
+      fc.innerHTML = html;
+    })
+    .catch(err => {
+      now.innerHTML = '<p class="weather-loading">Could not load weather. Check your connection.</p>';
+    });
+}
+
+loadWeather();
+
+
+/* ---------- CALCULATOR APP ---------- */
+(function initCalc() {
+  const display = document.querySelector('#calcDisplay');
+  if (!display) return;
+
+  let current = '';
+  let previous = '';
+  let operator = null;
+  let resetOnNext = false;
+
+  function update() {
+    display.textContent = current === '' ? '0' : current;
+  }
+
+  function appendNum(n) {
+    if (resetOnNext) {
+      current = '';
+      resetOnNext = false;
+    }
+    if (n === '0' && current === '0') return;
+    current += n;
+    update();
+  }
+
+  function setOperator(op) {
+    if (operator !== null && current !== '' && !resetOnNext) {
+      compute();
+    }
+    if (current === '') return;
+    previous = current;
+    operator = op;
+    resetOnNext = true;
+  }
+
+  function compute() {
+    if (operator === null || current === '') return;
+    const a = parseFloat(previous);
+    const b = parseFloat(current);
+    let result;
+    switch (operator) {
+      case '+': result = a + b; break;
+      case '-': result = a - b; break;
+      case '*': result = a * b; break;
+      case '/': result = b === 0 ? 'Error' : a / b; break;
+      default: return;
+    }
+    current = result === 'Error' ? 'Error' : String(Math.round(result * 1e10) / 1e10);
+    operator = null;
+    previous = '';
+    resetOnNext = true;
+    update();
+  }
+
+  function dot() {
+    if (resetOnNext) {
+      current = '0';
+      resetOnNext = false;
+    }
+    if (!current.includes('.')) current += '.';
+    update();
+  }
+
+  function neg() {
+    if (current !== '' && current !== '0') {
+      current = String(-parseFloat(current));
+      update();
+    }
+  }
+
+  function pct() {
+    if (current !== '') {
+      current = String(parseFloat(current) / 100);
+      update();
+    }
+  }
+
+  document.querySelectorAll('.calc-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const act = btn.dataset.act;
+      if (act === 'num') appendNum(btn.dataset.val);
+      else if (act === 'op') setOperator(btn.dataset.val);
+      else if (act === 'eq') compute();
+      else if (act === 'dot') dot();
+      else if (act === 'clear') { current = ''; previous = ''; operator = null; update(); }
+      else if (act === 'neg') neg();
+      else if (act === 'pct') pct();
+    });
+  });
+})();
+
+
+/* ---------- PAINT APP ---------- */
+(function initPaint() {
+  const canvas = document.querySelector('#paintCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  // white background
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  let drawing = false;
+  let color = '#16131f';
+  let size = 18;
+
+  function pos(e) {
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: (e.clientX - rect.left) * (canvas.width / rect.width),
+      y: (e.clientY - rect.top) * (canvas.height / rect.height)
+    };
+  }
+
+  canvas.addEventListener('mousedown', (e) => {
+    drawing = true;
+    const p = pos(e);
+    ctx.beginPath();
+    ctx.moveTo(p.x, p.y);
+    ctx.lineTo(p.x + 0.1, p.y + 0.1);
+    ctx.strokeStyle = color;
+    ctx.lineWidth = size;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.stroke();
+  });
+
+  canvas.addEventListener('mousemove', (e) => {
+    if (!drawing) return;
+    const p = pos(e);
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
+  });
+
+  window.addEventListener('mouseup', () => { drawing = false; });
+  canvas.addEventListener('mouseleave', () => { drawing = false; });
+
+  document.querySelectorAll('.paint-color').forEach(btn => {
+    btn.addEventListener('click', () => {
+      color = btn.dataset.color;
+      document.querySelectorAll('.paint-color').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.paint-size').forEach(btn => {
+    btn.addEventListener('click', () => {
+      size = parseInt(btn.dataset.size, 10);
+      document.querySelectorAll('.paint-size').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  document.querySelector('#paintClear').addEventListener('click', () => {
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  });
+})();

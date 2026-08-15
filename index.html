@@ -33,6 +33,26 @@
       <svg class="icon-img" viewBox="0 0 24 24" fill="none" stroke="#f5c451" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 9l3 3-3 3M11 15h5"/></svg>
       <p class="icon-label">Terminal</p>
     </div>
+    <div class="app-icon" id="contactIcon">
+      <svg class="icon-img" viewBox="0 0 24 24" fill="none" stroke="#ff8fa3" stroke-width="1.8"><path d="M3 5h18v14H3z"/><path d="M3 7l9 6 9-6"/></svg>
+      <p class="icon-label">Contact</p>
+    </div>
+    <div class="app-icon" id="weatherIcon">
+      <svg class="icon-img" viewBox="0 0 24 24" fill="none" stroke="#7cc7ff" stroke-width="1.8"><path d="M6 18a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.5A4.5 4.5 0 0 1 18 18z"/><path d="M12 3v2M3 12h2M19 12h2"/></svg>
+      <p class="icon-label">Weather</p>
+    </div>
+    <div class="app-icon" id="calcIcon">
+      <svg class="icon-img" viewBox="0 0 24 24" fill="none" stroke="#f5c451" stroke-width="1.8"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h.01M12 19h.01M16 19h.01"/></svg>
+      <p class="icon-label">Calculator</p>
+    </div>
+    <div class="app-icon" id="paintIcon">
+      <svg class="icon-img" viewBox="0 0 24 24" fill="none" stroke="#ff9ecf" stroke-width="1.8"><path d="M13 2L4 14h5l-2 8 11-12h-5z"/></svg>
+      <p class="icon-label">Paint</p>
+    </div>
+    <div class="app-icon" id="aboutIcon">
+      <svg class="icon-img" viewBox="0 0 24 24" fill="none" stroke="#00e5a0" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+      <p class="icon-label">About</p>
+    </div>
   </div>
 
   <!-- ============ WELCOME WINDOW ============ -->
@@ -126,6 +146,160 @@
       <div class="term-input-row">
         <span class="term-prompt">balaji@os:~$</span>
         <input type="text" id="termInput" autocomplete="off" spellcheck="false" />
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============ CONTACT APP ============ -->
+  <div class="window" id="contact" style="top: calc(50% - 200px); left: calc(50% - 260px); display: none;">
+    <div class="windowheader" id="contactheader">
+      <div class="closebutton" id="contactclose"></div>
+      <p class="headertext">Contact</p>
+      <div class="spacer"></div>
+    </div>
+    <div class="windowbody contact-body">
+      <div class="contact-card" onclick="openExternal('mailto:sribalaji.dangeti@gmail.com')">
+        <svg class="card-emoji" viewBox="0 0 24 24" fill="none" stroke="#7c5cff" stroke-width="1.8"><path d="M3 5h18v14H3z"/><path d="M3 7l9 6 9-6"/></svg>
+        <div>
+          <p class="card-title">Email</p>
+          <p class="card-desc">sribalaji.dangeti@gmail.com</p>
+        </div>
+      </div>
+      <div class="contact-card" onclick="openExternal('https://github.com/dsribalaji')">
+        <svg class="card-emoji" viewBox="0 0 24 24" fill="none" stroke="#7c5cff" stroke-width="1.8"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.4-1.1-1.1-1.4-1.1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.2-4.5-1.1-4.5-4.9 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.6 1 2.7 0 3.8-2.3 4.7-4.5 4.9.3.3.6.9.6 1.9v2.8c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>
+        <div>
+          <p class="card-title">GitHub</p>
+          <p class="card-desc">github.com/dsribalaji</p>
+        </div>
+      </div>
+      <div class="contact-card" onclick="openExternal('https://www.linkedin.com/in/sribalaji-dangeti')">
+        <svg class="card-emoji" viewBox="0 0 24 24" fill="none" stroke="#7c5cff" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4"/></svg>
+        <div>
+          <p class="card-title">LinkedIn</p>
+          <p class="card-desc">in/sribalaji-dangeti</p>
+        </div>
+      </div>
+      <div class="contact-card" onclick="openExternal('https://stardance.hackclub.com/@sribalajid')">
+        <svg class="card-emoji" viewBox="0 0 24 24" fill="none" stroke="#7c5cff" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><ellipse cx="12" cy="12" rx="3.4" ry="8"/><circle cx="12" cy="12" r="1.4" fill="#7c5cff"/></svg>
+        <div>
+          <p class="card-title">Stardance</p>
+          <p class="card-desc">@sribalajid</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============ WEATHER APP ============ -->
+  <div class="window" id="weather" style="top: calc(50% - 230px); left: calc(50% - 240px); display: none;">
+    <div class="windowheader" id="weatherheader">
+      <div class="closebutton" id="weatherclose"></div>
+      <p class="headertext">Weather</p>
+      <div class="spacer"></div>
+    </div>
+    <div class="windowbody weather-body">
+      <div class="weather-now" id="weatherNow">
+        <p class="weather-loading">Loading weather...</p>
+      </div>
+      <div class="weather-forecast" id="weatherForecast"></div>
+    </div>
+  </div>
+
+
+  <!-- ============ CALCULATOR APP ============ -->
+  <div class="window" id="calc" style="top: calc(50% - 240px); left: calc(50% - 170px); display: none;">
+    <div class="windowheader" id="calcheader">
+      <div class="closebutton" id="calcclose"></div>
+      <p class="headertext">Calculator</p>
+      <div class="spacer"></div>
+    </div>
+    <div class="windowbody calc-body">
+      <div class="calc-display" id="calcDisplay">0</div>
+      <div class="calc-grid">
+        <button class="calc-btn calc-fn" data-act="clear">C</button>
+        <button class="calc-btn calc-fn" data-act="neg">&plusmn;</button>
+        <button class="calc-btn calc-fn" data-act="pct">%</button>
+        <button class="calc-btn calc-op" data-act="op" data-val="/">&divide;</button>
+        <button class="calc-btn" data-act="num" data-val="7">7</button>
+        <button class="calc-btn" data-act="num" data-val="8">8</button>
+        <button class="calc-btn" data-act="num" data-val="9">9</button>
+        <button class="calc-btn calc-op" data-act="op" data-val="*">&times;</button>
+        <button class="calc-btn" data-act="num" data-val="4">4</button>
+        <button class="calc-btn" data-act="num" data-val="5">5</button>
+        <button class="calc-btn" data-act="num" data-val="6">6</button>
+        <button class="calc-btn calc-op" data-act="op" data-val="-">&minus;</button>
+        <button class="calc-btn" data-act="num" data-val="1">1</button>
+        <button class="calc-btn" data-act="num" data-val="2">2</button>
+        <button class="calc-btn" data-act="num" data-val="3">3</button>
+        <button class="calc-btn calc-op" data-act="op" data-val="+">+</button>
+        <button class="calc-btn calc-zero" data-act="num" data-val="0">0</button>
+        <button class="calc-btn" data-act="dot">.</button>
+        <button class="calc-btn calc-eq" data-act="eq">=</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============ PAINT APP ============ -->
+  <div class="window" id="paint" style="top: calc(50% - 280px); left: calc(50% - 280px); display: none;">
+    <div class="windowheader" id="paintheader">
+      <div class="closebutton" id="paintclose"></div>
+      <p class="headertext">Paint</p>
+      <div class="spacer"></div>
+    </div>
+    <div class="windowbody paint-body">
+      <div class="paint-tools">
+        <div class="paint-colors">
+          <button class="paint-color" data-color="#16131f" style="background:#16131f"></button>
+          <button class="paint-color" data-color="#7c5cff" style="background:#7c5cff"></button>
+          <button class="paint-color" data-color="#00e5a0" style="background:#00e5a0"></button>
+          <button class="paint-color" data-color="#f5c451" style="background:#f5c451"></button>
+          <button class="paint-color" data-color="#ec6b5e" style="background:#ec6b5e"></button>
+          <button class="paint-color" data-color="#7cc7ff" style="background:#7cc7ff"></button>
+          <button class="paint-color" data-color="#ff9ecf" style="background:#ff9ecf"></button>
+          <button class="paint-color" data-color="#ffffff" style="background:#ffffff"></button>
+        </div>
+        <div class="paint-sizes">
+          <button class="paint-size" data-size="4">S</button>
+          <button class="paint-size" data-size="10">M</button>
+          <button class="paint-size active" data-size="18">L</button>
+        </div>
+        <button class="paint-clear" id="paintClear">Clear</button>
+      </div>
+      <canvas id="paintCanvas" width="520" height="360"></canvas>
+    </div>
+  </div>
+
+
+  <!-- ============ ABOUT APP ============ -->
+  <div class="window" id="about" style="top: calc(50% - 270px); left: calc(50% - 300px); display: none;">
+    <div class="windowheader" id="aboutheader">
+      <div class="closebutton" id="aboutclose"></div>
+      <p class="headertext">About</p>
+      <div class="spacer"></div>
+    </div>
+    <div class="windowbody about-body">
+      <div class="about-section">
+        <p class="about-heading">Currently</p>
+        <p class="about-text">B.Tech in Electronics & Communication Engineering, second year, at St. Martin's Engineering College, Secunderabad (JNTUH).</p>
+      </div>
+      <div class="about-section">
+        <p class="about-heading">Focus</p>
+        <p class="about-text">Physical AI and edge compute — robots that see and move, microcontrollers that think, and AI agents that automate the boring stuff. Always building something that exists in the real world.</p>
+      </div>
+      <div class="about-section">
+        <p class="about-heading">Skills</p>
+        <div class="about-tags">
+          <span class="about-tag">C</span><span class="about-tag">Python</span><span class="about-tag">JavaScript</span>
+          <span class="about-tag">Embedded C</span><span class="about-tag">Arduino</span><span class="about-tag">Raspberry Pi</span>
+          <span class="about-tag">OpenCV</span><span class="about-tag">CrewAI</span><span class="about-tag">n8n</span>
+          <span class="about-tag">HTML/CSS</span>
+        </div>
+      </div>
+      <div class="about-section">
+        <p class="about-heading">Currently building</p>
+        <p class="about-text">A person-following rover on Raspberry Pi 5, a drone with vision-based autonomy, and an AI agent stack that plans and ships projects. This OS is one of them.</p>
       </div>
     </div>
   </div>
