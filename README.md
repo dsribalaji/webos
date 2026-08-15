@@ -12,6 +12,8 @@ Click "Boot", then:
 - Drag the Welcome window around by its header
 - Open Notes and switch between the four essays in the sidebar
 - Open Terminal and type `help` — try `sudo make me a coffee`
+- Open Weather to see today's forecast in Hyderabad
+- Open Paint and draw something with the canvas
 - Open Projects and click a card to learn about real work
 
 ## Features
@@ -22,6 +24,11 @@ Click "Boot", then:
 - Notes app: a sidebar reader with 4 personal essays
 - Projects app: clickable cards for real projects
 - Terminal app: a working shell with help, about, projects, skills, contact, date, echo, sudo, clear, exit, whoami
+- Weather app: live Hyderabad forecast from Open-Meteo (free API, no key)
+- Calculator app: full arithmetic with chained operations
+- Paint app: canvas drawing with 8 colors and 3 brush sizes
+- Contact app: clickable cards for email, GitHub, LinkedIn, Stardance
+- About app: education, focus, skills, current builds
 - Glassmorphism design with inline SVG icons, custom scrollbars, no frameworks
 
 ## Run it locally
